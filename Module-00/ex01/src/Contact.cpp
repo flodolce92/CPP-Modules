@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:33:06 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/26 01:49:25 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:20:47 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Contact::~Contact()
 {}
 
 // Read contact field and check if it's empty
-static std::string readField(std::string field)
+static	std::string readField(std::string field)
 {
 	std::string	input;
 
@@ -41,7 +41,7 @@ static std::string readField(std::string field)
 }
 
 // Create contact
-void Contact::createContact()
+void	Contact::createContact()
 {
 	this->firstName = readField("first name");
 	this->lastName = readField("last name");

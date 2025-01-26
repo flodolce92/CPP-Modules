@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 22:09:47 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/26 01:51:42 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:21:28 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PhoneBook::~PhoneBook()
 {}
 
 // Add contact
-void PhoneBook::addContact()
+void	PhoneBook::addContact()
 {
 	if (this->contactsCount == 8)
 	{
@@ -38,7 +38,7 @@ void PhoneBook::addContact()
 }
 
 // Truncate string
-static std::string trunc(std::string str)
+static	std::string trunc(std::string str)
 {
 	if (str.length() > 10)
 		return (str.substr(0, 9) + ".");
@@ -46,7 +46,7 @@ static std::string trunc(std::string str)
 }
 
 // Display contacts
-void PhoneBook::displayContacts() const
+void	PhoneBook::displayContacts() const
 {
 	std::cout << std::setw(10) << "Index" << "|";
 	std::cout << std::setw(10) << "First name" << "|";
@@ -62,7 +62,7 @@ void PhoneBook::displayContacts() const
 }
 
 // Display contact by index
-void PhoneBook::displayContact(int index) const
+void	PhoneBook::displayContact(int index) const
 {
 	std::cout << "First name: " << this->contacts[index].getFirstName() << std::endl;
 	std::cout << "Last name: " << this->contacts[index].getLastName() << std::endl;
@@ -72,7 +72,7 @@ void PhoneBook::displayContact(int index) const
 }
 
 // Get contacts count
-int PhoneBook::getContactsCount() const
+int	PhoneBook::getContactsCount() const
 {
 	return (this->contactsCount);
 }

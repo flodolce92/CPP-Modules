@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:38:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/26 01:50:13 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:22:17 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void searchContacts(PhoneBook &phoneBook)
 
 int	main()
 {
-	PhoneBook phoneBook;
+	PhoneBook	phoneBook;
 
 	while (true)
 	{
