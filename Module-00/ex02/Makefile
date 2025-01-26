@@ -6,7 +6,7 @@
 #    By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/25 23:39:09 by flo-dolc          #+#    #+#              #
-#    Updated: 2025/01/26 15:42:50 by flo-dolc         ###   ########.fr        #
+#    Updated: 2025/01/26 16:32:35 by flo-dolc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,12 @@ fclean:			clean
 # Rebuild the project from scratch
 re:				fclean all
 
+# Run the program and redirect output to mylog.log
+log:			all
+				@echo "$(GREEN)Running $(NAME) and redirecting output to mylog.log...$(RESET)"
+				@./$(NAME) > mylog.log
+
 # =============================================================================
 # Phony Targets
 # =============================================================================
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re log
