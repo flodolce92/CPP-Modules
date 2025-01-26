@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:38:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/25 23:34:16 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/26 01:50:13 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void searchContacts(PhoneBook &phoneBook)
 {
-	int index;
+	int	index;
 
 	phoneBook.displayContacts();
 	if (phoneBook.getContactsCount() == 0)
-		return;
+		return ;
 	std::cout << "Enter the index of the contact you want to see: ";
 	if (std::cin >> index)
 	{
@@ -52,9 +52,9 @@ int	main()
 		else if (command == "SEARCH")
 			searchContacts(phoneBook);
 		else if (command == "EXIT")
-			break;
+			break ;
 		else
 			std::cout << "Invalid command." << std::endl;
 	}
-	return 0;
+	return (0);
 }

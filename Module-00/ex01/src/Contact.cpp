@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:33:06 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/25 23:16:08 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/26 01:49:25 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ Contact::~Contact()
 {}
 
 // Read contact field and check if it's empty
-std::string readField(std::string field)
+static std::string readField(std::string field)
 {
-	std::string input;
+	std::string	input;
 
 	while (true)
 	{
 		std::cout << "Enter the " << field << ": ";
 		std::getline(std::cin, input);
 		if (!input.empty() && input.find_first_not_of(' ') != std::string::npos)
-			break;
+			break ;
 		std::cout << "The " << field << " cannot be empty or only spaces." << std::endl;
 	}
-	return input;
+	return (input);
 }
 
 // Create contact
@@ -54,25 +54,25 @@ void Contact::createContact()
 
 std::string Contact::getFirstName() const
 {
-	return this->firstName;
+	return (this->firstName);
 }
 
 std::string Contact::getLastName() const
 {
-	return this->lastName;
+	return (this->lastName);
 }
 
 std::string Contact::getNickname() const
 {
-	return this->nickname;
+	return (this->nickname);
 }
 
 std::string Contact::getPhoneNumber() const
 {
-	return this->phoneNumber;
+	return (this->phoneNumber);
 }
 
 std::string Contact::getDarkestSecret() const
 {
-	return this->darkestSecret;
+	return (this->darkestSecret);
 }
