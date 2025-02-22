@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:33:06 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/26 16:20:47 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/02/22 05:32:46 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,32 @@ static	std::string readField(std::string field)
 	return (input);
 }
 
+// Read phone number and check if it's valid
+static	std::string readPhoneNumber(std::string field)
+{
+	std::string	input;
+
+	while (true)
+	{
+		std::cout << "Enter the " << field << ": ";
+		std::getline(std::cin, input);
+		if (input.find_first_not_of("0123456789") == std::string::npos
+			&& input.length() == 10)
+			break ;
+		if (input.find_first_not_of("0123456789") != std::string::npos)
+			std::cout << "The " << field << " must contain only digits." << std::endl;
+		else if (input.length() != 10)
+			std::cout << "The " << field << " must contain 10 digits." << std::endl;}
+	return (input);
+}
+
 // Create contact
 void	Contact::createContact()
 {
 	this->firstName = readField("first name");
 	this->lastName = readField("last name");
 	this->nickname = readField("nickname");
-	this->phoneNumber = readField("phone number");
+	this->phoneNumber = readPhoneNumber("phone number");
 	this->darkestSecret = readField("darkest secret");
 
 	std::cout << "Contact created successfully!" << std::endl;

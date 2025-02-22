@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:38:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/26 16:22:17 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/02/22 05:39:28 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int	main()
 
 		std::cout << "Enter a command (ADD, SEARCH or EXIT): ";
 		std::getline(std::cin, command);
+
+		// Convert command to uppercase
+		for (size_t i = 0; i < command.length(); ++i)
+			command[i] = std::toupper(command[i]);
+
 		if (command == "ADD")
 			phoneBook.addContact();
 		else if (command == "SEARCH")
