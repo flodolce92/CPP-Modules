@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 05:09:46 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/02/22 05:12:01 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:08:06 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ class Harl
 			UNKNOWN
 		};
 
+		struct LevelCode
+		{
+			std::string	level;
+			Level		code;
+		};
+
 		void	debug();
 		void	info();
 		void	warning();
 		void	error();
-		Level	getLevel(const std::string &level);
+		Level	getLevelCode(const std::string &level);
 
 	public:
 		Harl();
