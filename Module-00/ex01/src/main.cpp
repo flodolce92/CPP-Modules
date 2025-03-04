@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 21:38:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/02/22 05:39:28 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/04 22:57:20 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,13 @@ int	main()
 		std::string command;
 
 		std::cout << "Enter a command (ADD, SEARCH or EXIT): ";
-		std::getline(std::cin, command);
+		if (!std::getline(std::cin, command))
+		{
+			if (std::cin.eof())
+				break ;
+			std::cout << "Error reading the command." << std::endl;
+			return (1);
+		}
 
 		// Convert command to uppercase
 		for (size_t i = 0; i < command.length(); ++i)
