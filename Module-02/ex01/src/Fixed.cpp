@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 03:28:58 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/02 20:34:02 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/05 02:07:23 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,17 @@ Fixed::Fixed(const float value) : value(roundf(value * (1 << Fixed::fractional_b
 }
 
 // Copy constructor
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed &src) : value(src.value)
 {
-	std::cout << YELLOW<< "Copy constructor called" << RESET << std::endl;
-	*this = other;
+	std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
 }
 
 // Assignation operator
-Fixed&	Fixed::operator=(const Fixed& other)
+Fixed	&Fixed::operator=(const Fixed &src)
 {
 	std::cout << BLUE << "Assignation operator called" << RESET << std::endl;
-	if (this != &other)
-		this->value = other.getRawBits();
+	if (this != &src)
+		this->value = src.getRawBits();
 	return (*this);
 }
 
@@ -79,7 +78,7 @@ int	Fixed::toInt() const
 }
 
 // Overload << operator
-std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
+std::ostream	&operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
 	return (out);

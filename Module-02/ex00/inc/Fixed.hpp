@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:01:50 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/02/26 04:22:30 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:20:58 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include <iostream>
 
-# define RESET   "\033[0m"
-# define RED     "\033[31m"
-# define GREEN   "\033[32m"
-# define YELLOW  "\033[33m"
-# define BLUE    "\033[34m"
+# define RESET	"\033[0m"
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define YELLOW	"\033[33m"
+# define BLUE	"\033[34m"
 
 class Fixed
 {
@@ -30,12 +30,12 @@ class Fixed
 	public:
 		// Constructors and destructor
 		Fixed();
-		Fixed(const Fixed& other);
-		Fixed& operator=(const Fixed& other);
+		Fixed(const Fixed &src);
+		Fixed &operator=(const Fixed &src);
 		~Fixed();
 
 		// Getters and setters
-		int		getRawBits () const;
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
 };
 

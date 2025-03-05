@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 21:41:48 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/04 16:52:33 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/05 02:08:35 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,9 @@ Fixed::Fixed(const float value) : value(roundf(value * (1 << Fixed::fractional_b
 }
 
 // Copy constructor
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed &src) : value(src.value)
 {
-	std::cout << YELLOW<< "Copy constructor called" << RESET << std::endl;
-	*this = other;
+	std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
 }
 
 // Destructor
@@ -50,71 +49,71 @@ Fixed::~Fixed()
 /* ************************************************************************** */
 
 // Assignation operator
-Fixed&	Fixed::operator=(const Fixed& other)
+Fixed	&Fixed::operator=(const Fixed &src)
 {
 	std::cout << BLUE << "Assignation operator called" << RESET << std::endl;
-	if (this != &other)
-		this->value = other.getRawBits();
+	if (this != &src)
+		this->value = src.getRawBits();
 	return (*this);
 }
 
 // Comparison operators
-bool	Fixed::operator>(const Fixed& other) const
+bool	Fixed::operator>(const Fixed &src) const
 {
-	return (this->value > other.getRawBits());
+	return (this->value > src.getRawBits());
 }
 
-bool	Fixed::operator<(const Fixed& other) const
+bool	Fixed::operator<(const Fixed &src) const
 {
-	return (this->value < other.getRawBits());
+	return (this->value < src.getRawBits());
 }
 
-bool	Fixed::operator>=(const Fixed& other) const
+bool	Fixed::operator>=(const Fixed &src) const
 {
-	return (this->value >= other.getRawBits());
+	return (this->value >= src.getRawBits());
 }
 
-bool	Fixed::operator<=(const Fixed& other) const
+bool	Fixed::operator<=(const Fixed &src) const
 {
-	return (this->value <= other.getRawBits());
+	return (this->value <= src.getRawBits());
 }
 
-bool	Fixed::operator==(const Fixed& other) const
+bool	Fixed::operator==(const Fixed &src) const
 {
-	return (this->value == other.getRawBits());
+	return (this->value == src.getRawBits());
 }
 
-bool	Fixed::operator!=(const Fixed& other) const
+bool	Fixed::operator!=(const Fixed &src) const
 {
-	return (this->value != other.getRawBits());
+	return (this->value != src.getRawBits());
 }
 
 /* ************************************************************************** */
 // Arithmetic operators
-Fixed	Fixed::operator+(const Fixed& other) const
+Fixed	Fixed::operator+(const Fixed &src) const
 {
-	return (Fixed(this->toFloat() + other.toFloat()));
+	return (Fixed(this->toFloat() + src.toFloat()));
 }
 
-Fixed	Fixed::operator-(const Fixed& other) const
+Fixed	Fixed::operator-(const Fixed &src) const
 {
-	return (Fixed(this->toFloat() - other.toFloat()));
+	return (Fixed(this->toFloat() - src.toFloat()));
 }
 
-Fixed	Fixed::operator*(const Fixed& other) const
+Fixed	Fixed::operator*(const Fixed &src) const
 {
-	return (Fixed(this->toFloat() * other.toFloat()));
+	return (Fixed(this->toFloat() * src.toFloat()));
 }
 
-Fixed	Fixed::operator/(const Fixed& other) const
+Fixed	Fixed::operator/(const Fixed &src) const
 {
-	return (Fixed(this->toFloat() / other.toFloat()));
+	return (Fixed(this->toFloat() / src.toFloat()));
 }
 
 /* ************************************************************************** */
 // Increment and decrement operators
 // Prefix increment
-Fixed&	Fixed::operator++()
+Fixed	&Fixed::operator++()
 {
 	this->value++;
 	return (*this);
@@ -129,7 +128,7 @@ Fixed	Fixed::operator++(int)
 }
 
 // Prefix decrement
-Fixed&	Fixed::operator--()
+Fixed	&Fixed::operator--()
 {
 	this->value--;
 	return (*this);
@@ -176,31 +175,31 @@ int	Fixed::toInt() const
 /* ************************************************************************** */
 
 // Return the minimum value between two Fixed objects
-Fixed&	Fixed::min(Fixed& a, Fixed& b)
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
 {
 	return (a < b ? a : b);
 }
 
 // Return the maximum value between two Fixed objects
-Fixed&	Fixed::max(Fixed& a, Fixed& b)
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
 	return (a > b ? a : b);
 }
 
 // Return the minimum value between two Fixed objects
-const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 {
 	return (a < b ? a : b);
 }
 
 // Return the maximum value between two Fixed objects
-const Fixed&	Fixed::max(const Fixed& a, const Fixed& b)
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
 	return (a > b ? a : b);
 }
 
 // Overload << operator
-std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
+std::ostream	&operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
 	return (out);
