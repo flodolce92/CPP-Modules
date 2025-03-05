@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:53:43 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/05 03:09:16 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/05 04:44:34 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ class ClapTrap
 		// Getters
 		std::string	getName() const;
 		int			getHitPoints() const;
+		int			getEnergyPoints() const;
 
 		// Methods
 		void	attack(std::string const &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 };
+
+bool	checkIfAliveAndWorking(const ClapTrap &clapTrap);
 
 #endif
