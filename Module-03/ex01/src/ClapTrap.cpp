@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:58:44 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 02:29:59 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:15:00 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(1
 
 ClapTrap::ClapTrap(const ClapTrap &src) : name(src.name), hitPoints(src.hitPoints), energyPoints(src.energyPoints), attackDamage(src.attackDamage)
 {
-	std::cout << BLUE << "ClapTrap copy constructor called" << RESET << std::endl;
+	std::cout << BLUE << "ClapTrap copy constructor called: " << name << RESET << std::endl;
 }
 
 ClapTrap::~ClapTrap()

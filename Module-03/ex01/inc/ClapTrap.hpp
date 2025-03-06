@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:53:43 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 02:25:45 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:06:53 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ class ClapTrap
 		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &src);
-		~ClapTrap();
+
+		// Virtual destructor is needed for polymorphism
+		// If you don't have a virtual destructor,
+		// the derived class destructor will not be called
+		virtual ~ClapTrap();
 
 		// Operator overloads
 		ClapTrap	&operator=(const ClapTrap &src);
