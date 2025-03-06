@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:53:43 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/05 04:44:34 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/06 02:09:12 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CLAPTRAP_HPP
 
 # define RESET	"\033[0m"
+# define ORANGE	"\033[38;5;208m"
 # define RED	"\033[31m"
 # define GREEN	"\033[32m"
 # define YELLOW	"\033[33m"
@@ -50,6 +51,6 @@ class ClapTrap
 		void	beRepaired(unsigned int amount);
 };
 
-bool	checkIfAliveAndWorking(const ClapTrap &clapTrap);
+bool	checkIfAliveAndWorking(const ClapTrap &clapTrap, std::string const &action);
 
 #endif
