@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:45:13 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 18:32:52 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/08 04:30:37 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,37 +55,6 @@ FragTrap	&FragTrap::operator=(const FragTrap &src)
 }
 
 // Methods
-void	FragTrap::attack(std::string const &target)
-{
-	if (!checkIfAliveAndWorking(*this, "attack"))
-		return ;
-	std::cout << YELLOW << this->getType() << " " << name << " attacks " << target
-			  << ", causing " << attackDamage << " points of damage!"
-			  << RESET << std::endl;
-	this->energyPoints -= 1;
-}
-
-void	FragTrap::takeDamage(unsigned int amount)
-{
-	std::cout << ORANGE << this->getType() << " " << name << " takes " << amount
-			  << " points of damage!" << RESET << std::endl;
-	if (amount > (unsigned int)hitPoints)
-		amount = hitPoints;
-	this->hitPoints -= amount;
-}
-
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	if (!checkIfAliveAndWorking(*this, "repair itself"))
-		return ;
-	if (amount > (unsigned int)(100 - hitPoints))
-		amount = 100 - hitPoints;
-	std::cout << GREEN << this->getType() << " " << name << " is repairing itself and gains "
-			  << amount << " points!" << RESET << std::endl;
-	this->hitPoints += amount;
-	this->energyPoints -= 1;
-}
-
 void	FragTrap::highFivesGuys()
 {
 	if (!checkIfAliveAndWorking(*this, "high five"))
