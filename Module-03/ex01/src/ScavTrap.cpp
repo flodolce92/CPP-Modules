@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 01:30:58 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 02:28:03 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/08 04:33:40 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,37 +56,6 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &src)
 }
 
 // Methods
-void	ScavTrap::attack(std::string const &target)
-{
-	if (!checkIfAliveAndWorking(*this, "attack"))
-		return ;
-	std::cout << YELLOW << "ScavTrap " << name << " attacks " << target
-			  << ", causing " << attackDamage << " points of damage!"
-			  << RESET << std::endl;
-	this->energyPoints -= 1;
-}
-
-void	ScavTrap::takeDamage(unsigned int amount)
-{
-	std::cout << ORANGE << "ScavTrap " << name << " takes " << amount
-			  << " points of damage!" << RESET << std::endl;
-	if (amount > (unsigned int)hitPoints)
-		amount = hitPoints;
-	this->hitPoints -= amount;
-}
-
-void	ScavTrap::beRepaired(unsigned int amount)
-{
-	if (!checkIfAliveAndWorking(*this, "repair itself"))
-		return ;
-	if (amount > (unsigned int)(100 - hitPoints))
-		amount = 100 - hitPoints;
-	std::cout << GREEN << "ScavTrap " << name << " is repairing itself and gains "
-			  << amount << " points!" << RESET << std::endl;
-	this->hitPoints += amount;
-	this->energyPoints -= 1;
-}
-
 void	ScavTrap::guardGate()
 {
 	if (!checkIfAliveAndWorking(*this, "guard the gate"))

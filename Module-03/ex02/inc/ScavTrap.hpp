@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:48:58 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 02:26:02 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/08 04:33:22 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ class ScavTrap: public ClapTrap
 
 		// Methods
 		std::string	getType() const;
-		void		attack(std::string const &target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
 		void		guardGate();
 };
 
