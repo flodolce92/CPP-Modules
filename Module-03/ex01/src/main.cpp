@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 01:31:25 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 17:33:55 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/06 18:28:24 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main()
 {
-	ScavTrap scav1;
-	ScavTrap scav2("G10RG10");
-	ScavTrap scav3 = scav2;
+	ScavTrap	scav1;
+	ScavTrap	scav2("G10RG10");
+	ScavTrap	scav3 = scav2;
 
 	scav1.attack("P1N0");
 	scav2.attack("P1N0");
