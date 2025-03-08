@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 03:04:08 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 00:42:54 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/08 04:19:47 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main()
 	clapTrap.takeDamage(5);
 	clapTrap.beRepaired(3);
 	std::cout << "ClapTrap " << clapTrap.getName()
-				<< " has " << clapTrap.getHitPoints() << " hit points left"
-				<< std::endl;
+			  << " has " << clapTrap.getHitPoints() << " hit points left"
+			  << std::endl;
 	return (0);
 }
