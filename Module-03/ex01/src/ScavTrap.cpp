@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 01:30:58 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/08 04:33:40 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:32:23 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ScavTrap::guardGate()
 	}
 	std::cout << "ScavTrap " << name << " has entered in gate keeper mode!" << std::endl;
 	isGuardingGate = true;
+	this->energyPoints -= 1;
 }
 
 std::string	ScavTrap::getType() const
