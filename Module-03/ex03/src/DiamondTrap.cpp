@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:21:58 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/09 19:27:13 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/09 19:38:01 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	DiamondTrap::attack(std::string const &target)
 void	DiamondTrap::whoAmI()
 {
 	std::cout << this->getType() << " " << name
-			  << " says: \"I am " << name
-			  << ", but my friends call me " << ClapTrap::name << "! "
-			  << "Or they would, if any of them were still alive, "
+			  << " says: \"I am " << RED << name << RESET
+			  << ", but my friends call me " << RED << ClapTrap::name << RESET
+			  << "! Or they would, if any of them were still alive, "
 			  << "or have existed in the first place!" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 18:07:12 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/09 19:29:16 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/09 19:35:33 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main()
 	std::cout << std::endl;
 
 	std::cout << "Creating DiamondTrap with parametric constructor..." << std::endl;
-	DiamondTrap dt2("DiamondTrapA");
+	DiamondTrap dt2("M3G4-T0PPER14");
 	std::cout << std::endl;
 
 	std::cout << "Creating a DiamondTrap using the copy constructor..." << std::endl;
@@ -31,7 +31,7 @@ int	main()
 	std::cout << std::endl;
 
 	std::cout << "Testing DiamondTrap's attack method..." << std::endl;
-	dt2.attack("TargetA");
+	dt2.attack("P1N0");
 	std::cout << std::endl;
 
 	std::cout << "Testing DiamondTrap's whoAmI method..." << std::endl;
