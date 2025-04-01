@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:50 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/26 03:49:25 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:33:48 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 // Constructors and destructor
 WrongCat::WrongCat() : WrongAnimal()
 {
+	DEBUG_LOG("WrongCat default constructor");
+
 	this->type = "WrongCat";
-	std::cout << BLUE << "WrongCat default constructor" << RESET << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src)
 {
-	std::cout << BLUE << "WrongCat copy constructor" << RESET << std::endl;
+	DEBUG_LOG("WrongCat copy constructor");
 }
 
 WrongCat::~WrongCat()
 {
-	std::cout << BLUE << "WrongCat destructor" << RESET << std::endl;
+	DEBUG_LOG("WrongCat destructor");
 }
 
 // Operator overloads
 WrongCat	&WrongCat::operator=(const WrongCat &src)
 {
-	std::cout << BLUE << "WrongCat assignation operator" << RESET << std::endl;
+	DEBUG_LOG("WrongCat assignation operator");
+
 	if (this == &src)
 		return (*this);
 

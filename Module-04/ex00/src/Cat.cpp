@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:10:39 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/26 03:25:47 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:28:07 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 // Constructors and destructor
 Cat::Cat() : Animal()
 {
+	DEBUG_LOG("Cat default constructor");
+
 	this->type = "Cat";
-	std::cout << BLUE << "Cat default constructor" << RESET << std::endl;
 }
 
 Cat::Cat(const Cat &src) : Animal(src)
 {
-	std::cout << BLUE << "Cat copy constructor" << RESET << std::endl;
+	DEBUG_LOG("Cat copy constructor");
 }
 
 Cat::~Cat()
 {
-	std::cout << BLUE << "Cat destructor" << RESET << std::endl;
+	DEBUG_LOG("Cat destructor");
 }
 
 // Operator overloads
 Cat	&Cat::operator=(const Cat &src)
 {
-	std::cout << BLUE << "Cat assignation operator" << RESET << std::endl;
+	DEBUG_LOG("Cat assignation operator");
+
 	if (this == &src)
 		return (*this);
 

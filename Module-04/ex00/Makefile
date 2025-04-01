@@ -6,7 +6,7 @@
 #    By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 03:40:42 by flo-dolc          #+#    #+#              #
-#    Updated: 2025/03/26 03:40:58 by flo-dolc         ###   ########.fr        #
+#    Updated: 2025/04/01 03:38:48 by flo-dolc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,11 @@ fclean:			clean
 # Rebuild the project from scratch
 re:				fclean all
 
+# Debug build: Compile with debug flags
+debug:
+				@$(MAKE) CXXFLAGS="$(CXXFLAGS) -DDEBUG" --no-print-directory re
+
 # =============================================================================
 # Phony Targets
 # =============================================================================
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re debug
