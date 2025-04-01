@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:19:56 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/26 03:20:40 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:29:21 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 // Constructors and destructor
 Dog::Dog() : Animal()
 {
+	DEBUG_LOG("Dog default constructor");
+
 	this->type = "Dog";
-	std::cout << BLUE << "Dog default constructor" << RESET << std::endl;
 }
 
 Dog::Dog(const Dog &src) : Animal(src)
 {
-	std::cout << BLUE << "Dog copy constructor" << RESET << std::endl;
+	DEBUG_LOG("Dog copy constructor");
 }
 
 Dog::~Dog()
 {
-	std::cout << BLUE << "Dog destructor" << RESET << std::endl;
+	DEBUG_LOG("Dog destructor");
 }
 
 // Operator overloads
 Dog	&Dog::operator=(const Dog &src)
 {
-	std::cout << BLUE << "Dog assignation operator" << RESET << std::endl;
+	DEBUG_LOG("Dog assignation operator");
+
 	if (this == &src)
 		return (*this);
 
