@@ -6,7 +6,7 @@
 #    By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 17:54:23 by flo-dolc          #+#    #+#              #
-#    Updated: 2025/04/03 19:51:55 by flo-dolc         ###   ########.fr        #
+#    Updated: 2025/04/03 21:26:53 by flo-dolc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC			=	main.cpp \
 				Ice.cpp \
 				Cure.cpp \
 				Character.cpp \
-				# MateriaSource.cpp
+				MateriaSource.cpp
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC))
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 
