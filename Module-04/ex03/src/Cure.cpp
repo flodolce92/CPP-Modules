@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 19:51:14 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/03 17:33:19 by flo-dolc         ###   ########.fr       */
+/*   Created: 2025/04/03 17:47:08 by flo-dolc          #+#    #+#             */
+/*   Updated: 2025/04/03 19:48:44 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Cure.hpp"
 #include "ICharacter.hpp"
 
 // Constructor and destructor
-AMateria::AMateria() : type("<none>")
+Cure::Cure() : AMateria("cure")
 {
-	DEBUG_LOG("AMateria default constructor");
+	DEBUG_LOG("Cure default constructor");
 }
 
-AMateria::AMateria(const std::string type) : type(type)
+Cure::Cure(const std::string type) : AMateria(type)
 {
-	DEBUG_LOG("AMateria parametric constructor");
+	DEBUG_LOG("Cure parametric constructor");
 }
 
-AMateria::AMateria(const AMateria &src) : type(src.type)
+Cure::Cure(const Cure &src) : AMateria(src)
 {
-	DEBUG_LOG("AMateria copy constructor");
+	DEBUG_LOG("Cure copy constructor");
 }
 
-AMateria::~AMateria()
+Cure::~Cure()
 {
-	DEBUG_LOG("AMateria destructor");
+	DEBUG_LOG("Cure destructor");
 }
 
 // Operator overloads
-AMateria &AMateria::operator=(const AMateria &src)
+Cure &Cure::operator=(const Cure &src)
 {
-	DEBUG_LOG("AMateria assignment operator");
+	DEBUG_LOG("Cure assignment operator");
 	if (this == &src)
 		return (*this);
 
@@ -46,14 +46,19 @@ AMateria &AMateria::operator=(const AMateria &src)
 }
 
 // Methods
-void AMateria::use(ICharacter &target)
+AMateria *Cure::clone() const
 {
-	std::cout << "* uses " << this->type << " on "
-			  << target.getName() << " *" << std::endl;
+	return (new Cure(*this));
+}
+
+void Cure::use(ICharacter &target)
+{
+	std::cout << "* heals " << target.getName()
+			  << "'s wounds *" << std::endl;
 }
 
 // Getters
-std::string const &AMateria::getType() const
+std::string const &Cure::getType() const
 {
 	return (this->type);
 }

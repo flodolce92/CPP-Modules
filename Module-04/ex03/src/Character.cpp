@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 20:55:28 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/03 04:06:53 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/03 20:58:03 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void Character::equip(AMateria *m)
 		if (this->inventory[i] == NULL)
 		{
 			this->inventory[i] = m;
-			return ;
+			return;
 		}
 	}
 	std::cout << "Inventory is full" << std::endl;
@@ -85,12 +85,12 @@ void Character::unequip(int idx)
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
 		std::cout << "Invalid index" << std::endl;
-		return ;
+		return;
 	}
 	if (this->inventory[idx] == NULL)
 	{
 		std::cout << "No materia to unequip" << std::endl;
-		return ;
+		return;
 	}
 	this->inventory[idx] = NULL;
 }
@@ -100,18 +100,38 @@ void Character::use(int idx, ICharacter &target)
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
 		std::cout << "Invalid index" << std::endl;
-		return ;
+		return;
 	}
 	if (this->inventory[idx] == NULL)
 	{
 		std::cout << "No materia to use" << std::endl;
-		return ;
+		return;
 	}
 	this->inventory[idx]->use(target);
+}
+
+bool Character::isInventoryFull() const
+{
+	for (int i = 0; i < MAX_INVENTORY; i++)
+	{
+		if (this->inventory[i] == NULL)
+			return (false);
+	}
+	return (true);
 }
 
 // Getters
 std::string const &Character::getName() const
 {
 	return (this->name);
+}
+
+AMateria *Character::getInventoryItem(int idx) const
+{
+	if (idx < 0 || idx >= MAX_INVENTORY)
+	{
+		std::cout << "Invalid index" << std::endl;
+		return (NULL);
+	}
+	return (this->inventory[idx]);
 }
