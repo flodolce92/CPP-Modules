@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 21:16:40 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/03 21:25:38 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/04 01:28:35 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 // Constructors and destructor
 MateriaSource::MateriaSource()
 {
-	DEBUG_LOG("MateriaSource default constructor");
+	DEBUG_LOG("MateriaSource default constructor", BLUE);
 	for (int i = 0; i < MAX_MATERIA; i++)
 		this->materia[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &src)
 {
-	DEBUG_LOG("MateriaSource copy constructor");
+	DEBUG_LOG("MateriaSource copy constructor", BLUE);
 	for (int i = 0; i < MAX_MATERIA; i++)
 	{
 		if (src.materia[i])
@@ -34,7 +34,7 @@ MateriaSource::MateriaSource(const MateriaSource &src)
 
 MateriaSource::~MateriaSource()
 {
-	DEBUG_LOG("MateriaSource destructor");
+	DEBUG_LOG("MateriaSource destructor", BLUE);
 	for (int i = 0; i < MAX_MATERIA; i++)
 	{
 		if (this->materia[i])
@@ -45,7 +45,7 @@ MateriaSource::~MateriaSource()
 // Operator overloads
 MateriaSource &MateriaSource::operator=(const MateriaSource &src)
 {
-	DEBUG_LOG("MateriaSource assignment operator");
+	DEBUG_LOG("MateriaSource assignment operator", BLUE);
 	if (this == &src)
 		return (*this);
 
@@ -64,13 +64,13 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &src)
 // Methods
 void MateriaSource::learnMateria(AMateria *m)
 {
-	DEBUG_LOG("MateriaSource learnMateria");
+	DEBUG_LOG("MateriaSource learnMateria", GREEN);
 	for (int i = 0; i < MAX_MATERIA; i++)
 	{
 		if (this->materia[i] == NULL)
 		{
 			this->materia[i] = m;
-			return ;
+			return;
 		}
 	}
 	std::cout << "MateriaSource is full" << std::endl;
@@ -78,7 +78,7 @@ void MateriaSource::learnMateria(AMateria *m)
 
 AMateria *MateriaSource::createMateria(std::string const &type)
 {
-	DEBUG_LOG("MateriaSource createMateria");
+	DEBUG_LOG("MateriaSource createMateria", YELLOW);
 	for (int i = 0; i < MAX_MATERIA; i++)
 	{
 		if (this->materia[i] && this->materia[i]->getType() == type)

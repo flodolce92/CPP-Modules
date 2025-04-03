@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 20:55:28 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/03 20:58:03 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/04 01:27:55 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
 // Constructors and destructor
 Character::Character() : name("<No name>")
 {
-	DEBUG_LOG("Character default constructor");
+	DEBUG_LOG("Character default constructor", BLUE);
 	for (int i = 0; i < MAX_INVENTORY; i++)
 		this->inventory[i] = NULL;
 }
 
 Character::Character(std::string name) : name(name)
 {
-	DEBUG_LOG("Character parametric constructor");
+	DEBUG_LOG("Character parametric constructor", BLUE);
 	for (int i = 0; i < MAX_INVENTORY; i++)
 		this->inventory[i] = NULL;
 }
 
 Character::Character(Character const &src)
 {
-	DEBUG_LOG("Character copy constructor");
+	DEBUG_LOG("Character copy constructor", BLUE);
 	*this = src;
 }
 
 Character::~Character()
 {
-	DEBUG_LOG("Character destructor");
+	DEBUG_LOG("Character destructor", BLUE);
 	for (int i = 0; i < MAX_INVENTORY; i++)
 	{
 		if (this->inventory[i])
@@ -47,7 +47,7 @@ Character::~Character()
 // Operator overloads
 Character &Character::operator=(Character const &src)
 {
-	DEBUG_LOG("Character assignment operator");
+	DEBUG_LOG("Character assignment operator", BLUE);
 	if (this == &src)
 		return (*this);
 
@@ -67,7 +67,7 @@ Character &Character::operator=(Character const &src)
 // Methods
 void Character::equip(AMateria *m)
 {
-	DEBUG_LOG("Character equip");
+	DEBUG_LOG("Character equip", GREEN);
 	for (int i = 0; i < MAX_INVENTORY; i++)
 	{
 		if (this->inventory[i] == NULL)
@@ -81,7 +81,7 @@ void Character::equip(AMateria *m)
 
 void Character::unequip(int idx)
 {
-	DEBUG_LOG("Character unequip");
+	DEBUG_LOG("Character unequip", RED);
 	if (idx < 0 || idx >= MAX_INVENTORY)
 	{
 		std::cout << "Invalid index" << std::endl;

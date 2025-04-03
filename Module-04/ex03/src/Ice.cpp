@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 17:30:31 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/03 17:34:37 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/04 01:25:55 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 // Constructor and destructor
 Ice::Ice() : AMateria("ice")
 {
-	DEBUG_LOG("Ice default constructor");
+	DEBUG_LOG("Ice default constructor", BLUE);
 }
 
 Ice::Ice(const std::string type) : AMateria(type)
 {
-	DEBUG_LOG("Ice parametric constructor");
+	DEBUG_LOG("Ice parametric constructor", BLUE);
 }
 
 Ice::Ice(const Ice &src) : AMateria(src)
 {
-	DEBUG_LOG("Ice copy constructor");
+	DEBUG_LOG("Ice copy constructor", BLUE);
 }
 
 Ice::~Ice()
 {
-	DEBUG_LOG("Ice destructor");
+	DEBUG_LOG("Ice destructor", BLUE);
 }
 
 // Operator overloads
 Ice &Ice::operator=(const Ice &src)
 {
-	DEBUG_LOG("Ice assignment operator");
+	DEBUG_LOG("Ice assignment operator", BLUE);
 	if (this == &src)
 		return (*this);
 

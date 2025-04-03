@@ -11,9 +11,10 @@
 # define BLUE	"\033[34m"
 
 # ifdef DEBUG
-#  define DEBUG_LOG(msg) std::cout << BLUE << msg << RESET << std::endl
+#  define DEBUG_LOG(msg, color) \
+  std::cout << color << "[DEBUG] " << msg << RESET << std::endl
 # else
-#  define DEBUG_LOG(msg)
+#  define DEBUG_LOG(msg, color)
 # endif
 
 #endif
