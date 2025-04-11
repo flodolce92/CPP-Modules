@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:19:29 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 16:58:12 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:06:36 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ void Bureaucrat::signForm(AForm &form)
 	{
 		form.beSigned(*this);
 		std::cout << (*this)
-				  << " signed "
+				  << GREEN << " signed " << RESET
 				  << form
 				  << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << (*this)
-				  << " couldn't sign "
+				  << RED << " couldn't sign " << RESET
 				  << form
 				  << " because "
 				  << RED << "form grade is too high" << RESET
@@ -114,14 +114,14 @@ void Bureaucrat::executeForm(AForm const &form) const
 	{
 		form.execute(*this);
 		std::cout << (*this)
-				  << " executed "
+				  << GREEN << " executed " << RESET
 				  << form
 				  << std::endl;
 	}
 	catch (const AForm::NotSignedException &e)
 	{
 		std::cerr << (*this)
-				  << " couldn't execute "
+				  << RED << " couldn't execute " << RESET
 				  << form
 				  << " because "
 				  << RED << e.what() << RESET
@@ -130,7 +130,7 @@ void Bureaucrat::executeForm(AForm const &form) const
 	catch (const AForm::GradeTooLowException &e)
 	{
 		std::cerr << (*this)
-				  << " couldn't execute "
+				  << RED << " couldn't execute " << RESET
 				  << form
 				  << " because "
 				  << RED << "form grade is too high" << RESET

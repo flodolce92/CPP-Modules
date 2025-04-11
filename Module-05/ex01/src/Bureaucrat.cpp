@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:19:29 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 16:42:45 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:05:05 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ void Bureaucrat::signForm(Form &form)
 	{
 		form.beSigned(*this);
 		std::cout << (*this)
-				  << " signed "
+				  << GREEN << " signed " << RESET
 				  << form
 				  << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << (*this)
-				  << " couldn't sign "
+				  << RED << " couldn't sign " << RESET
 				  << form
 				  << " because "
 				  << RED << "form grade is too high" << RESET
