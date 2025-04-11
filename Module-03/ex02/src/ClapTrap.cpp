@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:58:44 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 17:15:00 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/08 04:30:07 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ClapTrap::attack(std::string const &target)
 {
 	if (!checkIfAliveAndWorking(*this, "attack"))
 		return ;
-	std::cout << YELLOW << "ClapTrap " << name << " attacks " << target
+	std::cout << YELLOW << this->getType() << " " << name << " attacks " << target
 			  << ", causing " << attackDamage << " points of damage!"
 			  << RESET << std::endl;
 	this->energyPoints -= 1;
@@ -93,7 +93,7 @@ void	ClapTrap::attack(std::string const &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << ORANGE << "ClapTrap " << name << " takes " << amount
+	std::cout << ORANGE << this->getType() << " " << name << " takes " << amount
 			  << " points of damage!" << RESET << std::endl;
 	if (amount > (unsigned int)hitPoints)
 		amount = hitPoints;
@@ -106,7 +106,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	if (amount > (unsigned int)(10 - hitPoints))
 		amount = 10 - hitPoints;
-	std::cout << GREEN << "ClapTrap " << name << " is repairing itself and gains "
+	std::cout << GREEN << this->getType() << " " << name << " is repairing itself and gains "
 			  << amount << " points!" << RESET << std::endl;
 	this->hitPoints += amount;
 	this->energyPoints -= 1;

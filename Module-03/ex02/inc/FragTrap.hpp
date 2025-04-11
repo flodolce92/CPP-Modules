@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:36:19 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/06 17:45:45 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/08 04:30:51 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ class FragTrap: public ClapTrap
 
 		// Methods
 		std::string	getType() const;
-		void		attack(std::string const &target);
-		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
 		void		highFivesGuys();
 };
 
