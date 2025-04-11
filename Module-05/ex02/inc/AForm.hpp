@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:12:04 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 01:30:06 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:01:16 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class AForm
 		AForm();
 		AForm(const std::string name, const int gradeToSign, const int gradeToExecute);
 		AForm(const AForm &src);
-		~AForm();
+		virtual ~AForm();
 
 		// Operator overloads
 		AForm &operator=(const AForm &src);
