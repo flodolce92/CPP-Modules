@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:17:19 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/02/26 04:23:36 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/05 02:06:43 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,17 @@ Fixed::Fixed() : value(0)
 }
 
 // Copy constructor
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed &src) : value(src.value)
 {
-	std::cout << YELLOW<< "Copy constructor called" << RESET << std::endl;
-	*this = other;
+	std::cout << YELLOW << "Copy constructor called" << RESET << std::endl;
 }
 
 // Assignation operator
-Fixed&	Fixed::operator=(const Fixed& other)
+Fixed	&Fixed::operator=(const Fixed &src)
 {
 	std::cout << BLUE << "Assignation operator called" << RESET << std::endl;
-	if (this != &other)
-		this->value = other.getRawBits();
+	if (this != &src)
+		this->value = src.getRawBits();
 	return (*this);
 }
 

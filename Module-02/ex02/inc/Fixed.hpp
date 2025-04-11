@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 21:41:42 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/02 22:42:45 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:34:28 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <iostream>
 # include <cmath>
 
-# define RESET   "\033[0m"
-# define RED     "\033[31m"
-# define GREEN   "\033[32m"
-# define YELLOW  "\033[33m"
-# define BLUE    "\033[34m"
+# define RESET	"\033[0m"
+# define RED	"\033[31m"
+# define GREEN	"\033[32m"
+# define YELLOW	"\033[33m"
+# define BLUE	"\033[34m"
 
 class Fixed
 {
@@ -33,31 +33,31 @@ class Fixed
 		Fixed();
 		Fixed(const int value);
 		Fixed(const float value);
-		Fixed(const Fixed& other);
+		Fixed(const Fixed &src);
 		~Fixed();
 
 		// Overloads
-		Fixed&	operator=(const Fixed& other);
-		bool	operator>(const Fixed& other) const;
-		bool	operator<(const Fixed& other) const;
-		bool	operator>=(const Fixed& other) const;
-		bool	operator<=(const Fixed& other) const;
-		bool	operator==(const Fixed& other) const;
-		bool	operator!=(const Fixed& other) const;
-		Fixed	operator+(const Fixed& other) const;
-		Fixed	operator-(const Fixed& other) const;
-		Fixed	operator*(const Fixed& other) const;
-		Fixed	operator/(const Fixed& other) const;
-		Fixed&	operator++();
+		Fixed	&operator=(const Fixed &src);
+		bool	operator>(const Fixed &src) const;
+		bool	operator<(const Fixed &src) const;
+		bool	operator>=(const Fixed &src) const;
+		bool	operator<=(const Fixed &src) const;
+		bool	operator==(const Fixed &src) const;
+		bool	operator!=(const Fixed &src) const;
+		Fixed	operator+(const Fixed &src) const;
+		Fixed	operator-(const Fixed &src) const;
+		Fixed	operator*(const Fixed &src) const;
+		Fixed	operator/(const Fixed &src) const;
+		Fixed	&operator++();
 		Fixed	operator++(int);
-		Fixed&	operator--();
+		Fixed	&operator--();
 		Fixed	operator--(int);
 
 		// Static functions
-		static Fixed&	min(Fixed& a, Fixed& b);
-		static Fixed&	max(Fixed& a, Fixed& b);
-		static const Fixed&	min(const Fixed& a, const Fixed& b);
-		static const Fixed&	max(const Fixed& a, const Fixed& b);
+		static Fixed	&min(Fixed &a, Fixed &b);
+		static Fixed	&max(Fixed &a, Fixed &b);
+		static const Fixed	&min(const Fixed &a, const Fixed &b);
+		static const Fixed	&max(const Fixed &a, const Fixed &b);
 
 		// Getters and setters
 		int		getRawBits () const;
@@ -69,6 +69,6 @@ class Fixed
 };
 
 // Overload operator<< to print Fixed objects
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
