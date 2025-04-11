@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:38:26 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/09 20:26:32 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:45:23 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-	std::cout << RED << "Creating bureaucrat with grade 75..." << RESET << std::endl;
+	std::cout << YELLOW << "Creating bureaucrat with grade 75..." << RESET << std::endl;
 	try
 	{
 		Bureaucrat b1("TizioQualunque", 75);
@@ -26,10 +26,10 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Caught exception: " << e.what() << std::endl;
+		std::cerr << "Caught exception: " << RED << e.what() << RESET << std::endl;
 	}
 
-	std::cout << RED << "\nCreating bureaucrat with grade 0 (too high)..." << RESET << std::endl;
+	std::cout << YELLOW << "\nCreating bureaucrat with grade 0 (too high)..." << RESET << std::endl;
 	try
 	{
 		Bureaucrat b2("Boss", 0); // GradeTooHighException
@@ -37,10 +37,10 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Caught exception: " << e.what() << std::endl;
+		std::cerr << "Caught exception: " << RED << e.what() << RESET << std::endl;
 	}
 
-	std::cout << RED << "\nCreating bureaucrat with grade 200 (too low)..." << RESET << std::endl;
+	std::cout << YELLOW << "\nCreating bureaucrat with grade 200 (too low)..." << RESET << std::endl;
 	try
 	{
 		Bureaucrat b3("Quasimodo", 200); // GradeTooLowException
@@ -48,10 +48,10 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Caught exception: " << e.what() << std::endl;
+		std::cerr << "Caught exception: " << RED << e.what() << RESET << std::endl;
 	}
 
-	std::cout << RED << "\nTesting increment past grade 1..." << RESET << std::endl;
+	std::cout << YELLOW << "\nTesting increment past grade 1..." << RESET << std::endl;
 	try
 	{
 		Bureaucrat b4("Boss SSJ", 1);
@@ -62,10 +62,10 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Caught exception: " << e.what() << std::endl;
+		std::cerr << "Caught exception: " << RED << e.what() << RESET << std::endl;
 	}
 
-	std::cout << RED << "\nTesting decrement past grade 150..." << RESET << std::endl;
+	std::cout << YELLOW << "\nTesting decrement past grade 150..." << RESET << std::endl;
 	try
 	{
 		Bureaucrat b5("Licenzio", 150);
@@ -76,7 +76,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "Caught exception: " << e.what() << std::endl;
+		std::cerr << "Caught exception: " << RED << e.what() << RESET << std::endl;
 	}
 
 	return (0);
