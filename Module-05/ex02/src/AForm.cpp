@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:15:44 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 01:45:29 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:55:49 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,20 +127,20 @@ std::ostream &operator<<(std::ostream &out, const AForm &form)
 	if (form.getIsSigned())
 	{
 		out << form.getName()
-			<< "(signed"
+			<< GREY << "(signed"
 			<< ", toExecute = "
 			<< form.getGradeToExecute()
-			<< ")";
+			<< ")" << RESET;
 		return (out);
 	}
 
 	out << form.getName()
-		<< "("
+		<< GREY << "("
 		<< "unsigned"
 		<< ", toSign = "
 		<< form.getGradeToSign()
 		<< ", toExecute = "
 		<< form.getGradeToExecute()
-		<< ")";
+		<< ")" << RESET;
 	return (out);
 }

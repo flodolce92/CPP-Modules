@@ -6,22 +6,23 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 00:53:47 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 01:33:53 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:53:44 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 // Constructors and destructor
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: AForm("shrubbery creation", 145, 137),
+	: AForm("shrubbery_creation", 145, 137),
 	  target("<no target>")
 {
 	DEBUG_LOG("ShrubberyCreationForm default constructor", BLUE);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
-	: AForm("shrubbery creation", 145, 137),
+	: AForm("shrubbery_creation", 145, 137),
 	  target(target)
 {
 	DEBUG_LOG("ShrubberyCreationForm parametric constructor", BLUE);
@@ -52,7 +53,37 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 // Methods
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
+	std::ofstream	outFile;
+	std::string		filename;
+
 	this->isExecutable(executor);
+
+	filename = this->target + "_shrubbery";
+	outFile.open(filename.c_str(), std::ios::out | std::ios::trunc);
+	if (!outFile.is_open())
+	{
+		std::cout << RED << "Error opening output file: " << filename << RESET << std::endl;
+		return ;
+	}
+
+	outFile << "          .     .  .      +     .      .          .              \n"
+			<< "     .       .      .     #       .           .                  \n"
+			<< "        .      .         ###            .      .      .          \n"
+			<< "      .      .   \"#:. .:##\"##:. .:#\"  .      .                \n"
+			<< "          .      . \"####\"###\"####\"  .                        \n"
+			<< "       .     \"#:.    .:#\"###\"#:.    .:#\"  .        .       . \n"
+			<< "  .             \"#########\"#########\"        .        .       \n"
+			<< "        .    \"#:.  \"####\"###\"####\"  .:#\"   .       .       \n"
+			<< "     .     .  \"#######\"\"##\"##\"\"#######\"                  .\n"
+			<< "                .\"##\"#####\"#####\"##\"           .      .     \n"
+			<< "    .   \"#:. ...  .:##\"###\"###\"##:.  ... .:#\"     .         \n"
+			<< "      .     \"#######\"##\"#####\"##\"#######\"      .     .     \n"
+			<< "    .    .     \"#####\"\"#######\"\"#####\"    .      .         \n"
+			<< "            .     \"      000      \"    .     .                 \n"
+			<< "       .         .   .   000     .        .       .              \n"
+			<< ".. .. ..................O000O........................ ......     \n";
+
+	outFile.close();
 }
 
 // Getters

@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:54:40 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 17:00:01 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:53:26 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 // Constructors and destructor
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm("presidential pardon", 25, 5),
+	: AForm("presidential_pardon", 25, 5),
 	  target("<no target>")
 {
 	DEBUG_LOG("PresidentialPardonForm default constructor", BLUE);
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target)
-	: AForm("presidential pardon", 25, 5),
+	: AForm("presidential_pardon", 25, 5),
 	  target(target)
 {
 	DEBUG_LOG("PresidentialPardonForm parametric constructor", BLUE);
@@ -53,6 +53,8 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	this->isExecutable(executor);
+	std::cout << ORANGE << "Mr./Mrs. " << this->getTarget()
+			  << " has been pardoned by Zaphod Beeblebrox" << RESET << std::endl;
 }
 
 // Getters

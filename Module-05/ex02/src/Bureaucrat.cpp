@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:19:29 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 17:06:36 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:55:18 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,10 @@ void Bureaucrat::executeForm(AForm const &form) const
 {
 	try
 	{
+		std::cout << (*this)
+				  << YELLOW << " is trying to execute " << RESET
+				  << form
+				  << std::endl;
 		form.execute(*this);
 		std::cout << (*this)
 				  << GREEN << " executed " << RESET
@@ -159,9 +163,9 @@ void Bureaucrat::setGrade(int grade)
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
 	out << bureaucrat.getName()
-		<< "(grade "
+		<< GREY << "(grade "
 		<< bureaucrat.getGrade()
-		<< ")";
+		<< ")" << RESET;
 	return (out);
 }
 

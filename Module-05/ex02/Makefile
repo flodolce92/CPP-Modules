@@ -6,7 +6,7 @@
 #    By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 18:10:18 by flo-dolc          #+#    #+#              #
-#    Updated: 2025/04/11 01:34:42 by flo-dolc         ###   ########.fr        #
+#    Updated: 2025/04/11 18:38:38 by flo-dolc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ clean:
 # Clean object files and remove the executable
 fclean:			clean
 				@echo "$(RED)Removing executable...$(RESET)"
+				@$(RM) *_shrubbery
 				@$(RM) $(NAME)
 
 # Rebuild the project from scratch
