@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 17:45:13 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/08 04:30:37 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/09 19:30:59 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	FragTrap::highFivesGuys()
 {
 	if (!checkIfAliveAndWorking(*this, "high five"))
 		return ;
-	std::cout << this->getType() << " " << name << " says: \"Who wants a high five? Don't leave me hanging!\"" << std::endl;
+	std::cout << this->getType() << " " << name
+			  << " says: \"I'm requesting the highest of fives! "
+			  << "Come on, everybody, high fives!\"" << std::endl;
 	this->energyPoints -= 1;
 }
 
