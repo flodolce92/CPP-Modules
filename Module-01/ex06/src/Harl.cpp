@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 05:13:56 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/02/22 05:18:49 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/03/04 23:07:41 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,26 @@ void Harl::error()
 			  << std::endl;
 }
 
-Harl::Level Harl::getLevel(const std::string &level)
+Harl::Level Harl::getLevelCode(const std::string &level)
 {
-	if (level == "DEBUG")
-		return DEBUG;
-	if (level == "INFO")
-		return INFO;
-	if (level == "WARNING")
-		return WARNING;
-	if (level == "ERROR")
-		return ERROR;
+	LevelCode levels[] = {
+		{"DEBUG", DEBUG},
+		{"INFO", INFO},
+		{"WARNING", WARNING},
+		{"ERROR", ERROR}
+	};
+
+	for (size_t i = 0; i < sizeof(levels) / sizeof(levels[0]); i++)
+	{
+		if (levels[i].level == level)
+			return levels[i].code;
+	}
 	return UNKNOWN;
 }
 
 void Harl::complain(std::string level)
 {
-	switch (getLevel(level))
+	switch (getLevelCode(level))
 	{
 		case DEBUG:
 			this->debug();
