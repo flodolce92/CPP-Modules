@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:19:29 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 16:41:53 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:58:12 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void Bureaucrat::signForm(AForm &form)
 		std::cerr << (*this)
 				  << " couldn't sign "
 				  << form
-				  << " because form grade is too high"
+				  << " because "
+				  << RED << "form grade is too high" << RESET
 				  << std::endl;
 	}
 }
