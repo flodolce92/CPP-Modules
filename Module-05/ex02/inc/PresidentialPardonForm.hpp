@@ -6,12 +6,12 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:53:36 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 16:54:07 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:43:21 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM
-# define PRESIDENTIALPARDONFORM
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include "AForm.hpp"
 

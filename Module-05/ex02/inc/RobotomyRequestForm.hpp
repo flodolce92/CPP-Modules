@@ -6,12 +6,12 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:53:53 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 16:54:19 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:43:28 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM
-# define ROBOTOMYREQUESTFORM
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
 

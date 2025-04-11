@@ -6,12 +6,12 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 00:45:42 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 01:04:48 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:43:33 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM
-# define SHRUBBERYCREATIONFORM
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 # include "AForm.hpp"
 
