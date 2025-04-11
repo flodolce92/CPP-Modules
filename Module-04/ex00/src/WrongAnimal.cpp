@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 03:32:45 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/03/26 03:48:44 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/01 03:32:30 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,24 @@
 // Constructors and destructor
 WrongAnimal::WrongAnimal() : type("WrongAnimal")
 {
-	std::cout << BLUE << "WrongAnimal default constructor" << RESET << std::endl;
+	DEBUG_LOG("WrongAnimal default constructor");
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src) : type(src.type)
 {
-	std::cout << BLUE << "WrongAnimal copy constructor" << RESET << std::endl;
+	DEBUG_LOG("WrongAnimal copy constructor");
 }
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << BLUE << "WrongAnimal destructor" << RESET << std::endl;
+	DEBUG_LOG("WrongAnimal destructor");
 }
 
 // Operator overloads
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &src)
 {
-	std::cout << BLUE << "WrongAnimal assignation operator" << RESET << std::endl;
+	DEBUG_LOG("WrongAnimal assignation operator");
+
 	if (this == &src)
 		return (*this);
 
