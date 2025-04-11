@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 21:04:18 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/11 21:45:43 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/11 21:59:34 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ AForm *Intern::makeForm(const std::string &nameForm, const std::string &target)
 	{
 		if (nameForm == formMap[i].name)
 		{
-			std::cout << "Intern creates " << nameForm << std::endl;
-			return (formMap[i].create(target));
+			AForm *form = formMap[i].create(target);
+			std::cout << "Intern creates " << *form << std::endl;
+			return (form);
 		}
 	}
 
