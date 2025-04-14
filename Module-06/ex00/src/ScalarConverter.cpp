@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:33:35 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 03:46:18 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 04:21:12 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src)
 void ScalarConverter::convert(std::string literal)
 {
 	std::cout << "Literal: " << literal << " len: " << literal.length() << std::endl;
-	if (literal.length() == 1 || quoteForm(literal) == 1)
-		if (charCase(literal) == 1)
+
+	if (specialCases(literal))
+		return;
+
+	if (literal.length() == 1 || quoteForm(literal))
+		if (charCase(literal))
 			return;
 
 	std::cout << "char: impossible\n"
@@ -42,6 +46,31 @@ void ScalarConverter::convert(std::string literal)
 }
 
 // Helper Functions
+int specialCases(std::string &literal)
+{
+	if (literal != "nan" && literal != "nanf" &&
+		literal != "-inf" && literal != "+inf" &&
+		literal != "-inff" && literal != "+inff")
+		return (0);
+
+	std::cout << "char: impossible\n"
+			  << "int: impossible\n";
+
+	// from double to float
+	if (literal == "nan" || literal == "-inf" || literal == "+inf")
+	{
+		std::cout << "float: " << literal << "f\n"
+				  << "double: " << literal << "\n";
+	}
+	else // from float to double
+	{
+		std::cout << std::fixed << std::setprecision(1)
+				  << "float: " << literal << "\n"
+				  << "double: " << literal.substr(0, literal.length() - 1) << "\n";
+	}
+	return (1);
+}
+
 int charCase(std::string &literal)
 {
 	char c = literal[0];
