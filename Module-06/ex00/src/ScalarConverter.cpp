@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:33:35 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 18:29:25 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:51:34 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &src)
 // Methods
 void ScalarConverter::convert(std::string literal)
 {
-	std::cout << "Literal: " << literal << " len: " << literal.length() << std::endl;
-
 	if (specialCases(literal))
 		return;
 
@@ -40,15 +38,15 @@ void ScalarConverter::convert(std::string literal)
 		if (charCase(literal))
 			return;
 	}
-	DEBUG_LOG("not char", BLUE);
 
 	if (intCase(literal))
 		return;
-	DEBUG_LOG("not int", BLUE);
 
 	if (floatCase(literal))
 		return;
-	DEBUG_LOG("not float", BLUE);
+
+	if (doubleCase(literal))
+		return;
 
 	std::cout << "char: impossible\n"
 			  << "int: impossible\n"

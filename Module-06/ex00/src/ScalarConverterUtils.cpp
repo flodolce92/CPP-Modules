@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 04:26:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 18:36:29 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:52:01 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,10 @@ int intCase(const std::string &literal)
 	long num = std::strtol(literal.c_str(), &end, 10);
 
 	if (*end != '\0')
-	{
-		std::cout << "leftover: " << end << std::endl;
 		return (0);
-	}
 
 	if (errno == ERANGE || num < INT_MIN || num > INT_MAX)
-	{
-		std::cout << "Out of Int Range" << std::endl;
 		return (0);
-	}
 
 	double value = static_cast<double>(num);
 	printChar(value);
@@ -98,21 +92,33 @@ int floatCase(const std::string &literal)
 	float num = std::strtof(literal.c_str(), &end);
 
 	if (end[0] != 'f' || end[1] != '\0')
-	{
-		std::cout << "leftover: " << end << std::endl;
 		return (0);
-	}
 
 	if (errno == ERANGE)
-	{
-		std::cout << "Out of Float Range" << std::endl;
 		return (0);
-	}
 
 	double value = static_cast<double>(num);
 	printChar(value);
 	printInt(value);
 	printFloatDouble(value);
+
+	return (1);
+}
+
+int doubleCase(const std::string &literal)
+{
+	char *end;
+	double num = std::strtod(literal.c_str(), &end);
+
+	if (*end != '\0')
+		return (0);
+
+	if (errno == ERANGE)
+		return (0);
+
+	printChar(num);
+	printInt(num);
+	printFloatDouble(num);
 
 	return (1);
 }
