@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 04:26:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 04:28:53 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:23:48 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,35 @@ int charCase(std::string &literal)
 		return (1);
 	}
 	return (0);
+}
+
+int intCase(std::string &literal)
+{
+	char c;
+	char *end;
+	int num = std::strtol(literal.c_str(), &end, 10);
+
+	if (*end != '\0')
+	{
+		std::cout << "leftover: " << end << std::endl;
+		return (0);
+	}
+
+	if (errno == ERANGE || num < INT_MIN || num > INT_MAX)
+	{
+		std::cout << "Out of Int Range" << std::endl;
+		return (0);
+	}
+
+	c = static_cast<char>(num);
+	if (!std::isprint(c))
+		std::cout << "char: Non displayable\n";
+	else
+		std::cout << "char: \'" << c << "\'\n";
+
+	std::cout << "int: " << num << "\n"
+			  << std::fixed << std::setprecision(1)
+			  << "float: " << static_cast<float>(num) << "f\n"
+			  << "double: " << static_cast<double>(num) << "\n";
+	return (1);
 }

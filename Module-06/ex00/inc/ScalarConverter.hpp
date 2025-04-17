@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:17:34 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 04:28:23 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:07:02 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define SCALARCONVERTER_HPP
 
 # include "debug.hpp"
+# include <string>
+# include <cstdlib>
+# include <climits>
+# include <cerrno>
 # include <cctype>
 # include <iomanip>
 
