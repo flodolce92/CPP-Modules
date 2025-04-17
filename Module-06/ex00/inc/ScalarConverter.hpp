@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:17:34 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 16:07:02 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:55:31 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include <cstdlib>
 # include <climits>
+# include <limits>
 # include <cerrno>
 # include <cctype>
 # include <iomanip>
