@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:17:34 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 16:55:31 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:17:05 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,10 @@ int floatCase(std::string &literal);
 int doubleCase(std::string &literal);
 int specialCases(std::string &literal);
 int quoteForm(std::string &literal);
+
+// Print Functions
+void printChar(double value);
+void printInt(double value);
+void printFloatDouble(double value);
 
 #endif

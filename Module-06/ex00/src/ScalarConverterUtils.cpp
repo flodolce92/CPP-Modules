@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 04:26:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 17:28:22 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:16:14 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,26 @@ int quoteForm(std::string &literal)
 
 int charCase(std::string &literal)
 {
-	char c = literal[0];
+	char c;
+	bool quote = false;
+	std::string str = literal;
 
 	if (quoteForm(literal) == 1)
-		c = literal[1];
+	{
+		str = literal.substr(1, 1);
+		quote = true;
+	}
 
-	if (!std::isprint(c) || std::isdigit(c))
+	c = str[0];
+
+	if (!std::isprint(c))
 		return (0);
+
+	if (std::isdigit(c) && !quote)
+	{
+		intCase(str);
+		return (1);
+	}
 
 	std::cout << "char: \'" << c << "\'\n"
 			  << "int: " << static_cast<int>(c) << "\n"
@@ -78,15 +91,12 @@ int intCase(std::string &literal)
 		return (0);
 	}
 
-	if (num < 0 || num > 127 || !std::isprint(static_cast<int>(num)))
-		std::cout << "char: Non displayable\n";
-	else
-		std::cout << "char: \'" << static_cast<char>(num) << "\'\n";
+	double value = static_cast<double>(num);
 
-	std::cout << "int: " << num << "\n"
-			  << std::fixed << std::setprecision(1)
-			  << "float: " << static_cast<float>(num) << "f\n"
-			  << "double: " << static_cast<double>(num) << "\n";
+	printChar(value);
+	printInt(value);
+	printFloatDouble(value);
+
 	return (1);
 }
 
@@ -107,18 +117,11 @@ int floatCase(std::string &literal)
 		return (0);
 	}
 
-	if (num < 0 || num > 127 || !std::isprint(static_cast<int>(num)))
-		std::cout << "char: Non displayable\n";
-	else
-		std::cout << "char: \'" << static_cast<int>(num) << "\'\n";
+	double value = static_cast<double>(num);
 
-	if (num < static_cast<float>(INT_MIN) || num > static_cast<float>(INT_MAX))
-		std::cout << "int: impossible\n";
-	else
-		std::cout << "int: " << static_cast<int>(num) << "\n";
+	printChar(value);
+	printInt(value);
+	printFloatDouble(value);
 
-	std::cout << std::fixed << std::setprecision(1)
-			  << "float: " << num << "f\n"
-			  << "double: " << static_cast<double>(num) << "\n";
 	return (1);
 }
