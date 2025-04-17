@@ -6,7 +6,7 @@
 #    By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/14 16:15:24 by flo-dolc          #+#    #+#              #
-#    Updated: 2025/04/14 17:46:02 by flo-dolc         ###   ########.fr        #
+#    Updated: 2025/04/17 04:26:48 by flo-dolc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ OBJS_DIR	=	obj/
 INC_DIR		=	inc/
 
 SRC			=	main.cpp \
-				ScalarConverter.cpp
+				ScalarConverter.cpp \
+				ScalarConverterUtils.cpp
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC))
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 
