@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:33:35 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 16:31:27 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:29:25 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ScalarConverter::convert(std::string literal)
 	if (specialCases(literal))
 		return;
 
-	if (literal.length() == 1 || quoteForm(literal))
+	if (literal.length() == 1 || isQuotedChar(literal))
 	{
 		if (charCase(literal))
 			return;

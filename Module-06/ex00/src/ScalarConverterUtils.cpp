@@ -6,14 +6,14 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 04:26:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 18:16:14 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:36:29 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 // Helper Functions
-int specialCases(std::string &literal)
+int specialCases(const std::string &literal)
 {
 	if (literal != "nan" && literal != "nanf" &&
 		literal != "-inf" && literal != "+inf" &&
@@ -38,43 +38,36 @@ int specialCases(std::string &literal)
 	return (1);
 }
 
-int quoteForm(std::string &literal)
+bool isQuotedChar(const std::string &literal)
 {
 	return (literal.length() == 3 && literal[0] == '\'' && literal[2] == '\'');
 }
 
-int charCase(std::string &literal)
+int charCase(const std::string &literal)
 {
-	char c;
-	bool quote = false;
 	std::string str = literal;
+	bool isQuoted = isQuotedChar(literal);
 
-	if (quoteForm(literal) == 1)
-	{
+	if (isQuoted)
 		str = literal.substr(1, 1);
-		quote = true;
-	}
 
-	c = str[0];
+	char c = str[0];
 
-	if (!std::isprint(c))
+	if (!std::isprint(static_cast<unsigned char>(c)))
 		return (0);
 
-	if (std::isdigit(c) && !quote)
-	{
-		intCase(str);
-		return (1);
-	}
+	if (std::isdigit(c) && !isQuoted)
+		return (intCase(str));
 
-	std::cout << "char: \'" << c << "\'\n"
-			  << "int: " << static_cast<int>(c) << "\n"
-			  << std::fixed << std::setprecision(1)
-			  << "float: " << static_cast<float>(c) << "f\n"
-			  << "double: " << static_cast<double>(c) << "\n";
+	double value = static_cast<double>(c);
+	printChar(value);
+	printInt(value);
+	printFloatDouble(value);
+
 	return (1);
 }
 
-int intCase(std::string &literal)
+int intCase(const std::string &literal)
 {
 	char *end;
 	long num = std::strtol(literal.c_str(), &end, 10);
@@ -92,7 +85,6 @@ int intCase(std::string &literal)
 	}
 
 	double value = static_cast<double>(num);
-
 	printChar(value);
 	printInt(value);
 	printFloatDouble(value);
@@ -100,7 +92,7 @@ int intCase(std::string &literal)
 	return (1);
 }
 
-int floatCase(std::string &literal)
+int floatCase(const std::string &literal)
 {
 	char *end;
 	float num = std::strtof(literal.c_str(), &end);
@@ -118,7 +110,6 @@ int floatCase(std::string &literal)
 	}
 
 	double value = static_cast<double>(num);
-
 	printChar(value);
 	printInt(value);
 	printFloatDouble(value);

@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:17:34 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 18:17:05 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:35:56 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ class ScalarConverter
 };
 
 // Helper Functions
-int charCase(std::string &literal);
-int intCase(std::string &literal);
-int floatCase(std::string &literal);
-int doubleCase(std::string &literal);
-int specialCases(std::string &literal);
-int quoteForm(std::string &literal);
+int charCase(const std::string &literal);
+int intCase(const std::string &literal);
+int floatCase(const std::string &literal);
+int doubleCase(const std::string &literal);
+int specialCases(const std::string &literal);
+bool isQuotedChar(const std::string &literal);
 
 // Print Functions
 void printChar(double value);
