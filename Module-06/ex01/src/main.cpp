@@ -6,11 +6,12 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:37:19 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/18 22:34:35 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/18 22:43:48 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+#include <iomanip>
 
 void loadCharacter(Data *character)
 {

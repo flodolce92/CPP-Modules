@@ -6,11 +6,12 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 04:26:01 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/04/17 18:52:01 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/04/18 22:44:16 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <iomanip>
 
 // Helper Functions
 int specialCases(const std::string &literal)
