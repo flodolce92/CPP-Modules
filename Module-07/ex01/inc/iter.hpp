@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 19:16:35 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/05/07 19:16:36 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/05/09 04:43:36 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 #include "debug.hpp"
 
-template <typename T>
-void iter(T *array, size_t len, void (*func)(T &))
+template <typename T, typename Func>
+void iter(T *array, size_t len, Func func)
 {
 	if (array == NULL)
 		return;
@@ -27,7 +27,7 @@ void iter(T *array, size_t len, void (*func)(T &))
 }
 
 template <typename T>
-void print(T &x)
+void print(const T &x)
 {
 	std::cout << x << std::endl;
 }
