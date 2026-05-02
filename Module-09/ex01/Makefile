@@ -26,14 +26,15 @@ SRCS_DIR	=	src/
 OBJS_DIR	=	obj/
 INC_DIR		=	inc/
 
-SRC			=	main.cpp
+SRC			=	main.cpp \
+				RPN.cpp
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRC))
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRC:.cpp=.o))
 
 # =============================================================================
 # Compiler and Flags
 # =============================================================================
-NAME		=	
+NAME		=	RPN
 CXX			=	g++
 CXXFLAGS	=	-Wall -Wextra -Werror -g -std=c++98
 INC			=	-I $(INC_DIR)
