@@ -18,10 +18,9 @@ RPN::RPN()
 	DEBUG_LOG("RPN default constructor", BLUE);
 }
 
-RPN::RPN(const RPN &src)
+RPN::RPN(const RPN &src) : stack(src.stack)
 {
 	DEBUG_LOG("RPN copy constructor", BLUE);
-	*this = src;
 }
 
 RPN::~RPN()
@@ -33,7 +32,9 @@ RPN::~RPN()
 RPN &RPN::operator=(const RPN &src)
 {
 	DEBUG_LOG("RPN assignation operator", BLUE);
-	*this = src;
+
+	if (this != &src)
+		stack = src.stack;
 
 	return (*this);
 }
