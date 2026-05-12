@@ -23,11 +23,20 @@
 class PmergeMe
 {
 	private:
-		std::vector<int> vector;
-		std::deque<int> deque;
-
 		// Private methods
 		bool isValidInput(int ac, char **av);
+		template <typename T>
+		std::string containerToString(const T &container);
+
+		// Vector
+		std::vector<int> loadVector(int ac, char **av);
+		std::vector<int> mergeSortVector(std::vector<int> &vector);
+		void insertSortVector(std::vector<int> &mainChain, std::vector<int> &pend);
+
+		// Deque
+		std::deque<int> loadDeque(int ac, char **av);
+		std::deque<int> mergeSortDeque(std::deque<int> &deque);
+		void insertSortDeque(std::deque<int> &mainChain, std::deque<int> &pend);
 
 	public:
 		// Constructors and destructor
@@ -39,8 +48,10 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe &src);
 
 		// Public methods
-		void sortVector(int ac, char **av);
-		void sortDeque(int ac, char **av);
+		std::string sortVector(int ac, char **av);
+		std::string sortDeque(int ac, char **av);
 };
+
+#include <PmergeMe.tpp>
 
 #endif

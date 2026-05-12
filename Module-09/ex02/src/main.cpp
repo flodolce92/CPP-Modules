@@ -20,8 +20,31 @@ int main(int ac, char **av)
 		return (1);
 	}
 
-	try {
+	try
+	{
 		PmergeMe sorter;
+		clock_t start;
+		double timeVector;
+		// double timeDeque;
+
+		start = clock();
+		std::string vectorResult = sorter.sortVector(ac, av);
+		timeVector = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+
+		// start = clock();
+		// std::string dequeResult = sorter.sortDeque(ac, av);
+		// timeDeque = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+
+		// if (vectorResult != dequeResult)
+		// 	throw std::runtime_error("Sorting results do not match between vector and deque.");
+
+		std::cout << YELLOW << "Before sorting: ";
+		for (int i = 1; i < ac; i++)
+			std::cout << av[i] << " ";
+		std::cout << RESET << std::endl;
+		std::cout << GREEN << "After sorting: " << vectorResult << RESET << std::endl;
+		std::cout << BLUE << "Time taken to sort with vector: " << timeVector << " seconds" << RESET << std::endl;
+		// std::cout << BLUE << "Time taken to sort with deque: " << timeDeque << " seconds" << RESET << std::endl;
 	}
 	catch (const std::exception &e)
 	{
