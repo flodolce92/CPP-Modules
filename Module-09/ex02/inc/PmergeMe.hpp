@@ -6,19 +6,22 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:23:04 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/11 15:07:04 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/13 01:18:51 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-#include <debug.hpp>
-#include <iostream>
 #include <algorithm>
-#include <vector>
-#include <deque>
 #include <ctime>
+#include <deque>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include <debug.hpp>
 
 class PmergeMe
 {
@@ -31,12 +34,18 @@ class PmergeMe
 		// Vector
 		std::vector<int> loadVector(int ac, char **av);
 		std::vector<int> mergeSortVector(std::vector<int> &vector);
-		void insertSortVector(std::vector<int> &mainChain, std::vector<int> &pend);
+		void mergeInsertionVector(std::vector<int> &vector, int pairLevel);
+		void insertSortVector(std::vector<int> &container, std::vector<size_t> &mainChain,
+							  std::vector<size_t> &pend, bool hasOdd);
+		void swapPairVector(std::vector<int> &vector, size_t startIndex, int pairLevel);
 
 		// Deque
 		std::deque<int> loadDeque(int ac, char **av);
 		std::deque<int> mergeSortDeque(std::deque<int> &deque);
-		void insertSortDeque(std::deque<int> &mainChain, std::deque<int> &pend);
+		void mergeInsertionDeque(std::deque<int> &deque, int pairLevel);
+		void insertSortDeque(std::deque<int> &container, std::vector<size_t> &mainChain,
+							 std::vector<size_t> &pend, bool hasOdd);
+		void swapPairDeque(std::deque<int> &deque, size_t startIndex, int pairLevel);
 
 	public:
 		// Constructors and destructor
@@ -52,6 +61,6 @@ class PmergeMe
 		std::string sortDeque(int ac, char **av);
 };
 
-#include <PmergeMe.tpp>
+#include "PmergeMe.tpp"
 
 #endif
