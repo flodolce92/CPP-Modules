@@ -6,17 +6,44 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:21:22 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/11 15:00:18 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/19 23:46:12 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PmergeMe.hpp>
+
+bool isArgsValid(int ac, char **av)
+{
+	for (int i = 1; i < ac; i++)
+	{
+		std::string arg(av[i]);
+		if (arg.empty())
+			return (false);
+
+		if (arg.length() > 10 || (arg.length() == 10 && arg > "2147483647"))
+			return (false);
+
+		for (size_t j = 0; j < arg.size(); j++)
+		{
+			if (!std::isdigit(arg[j]))
+				return (false);
+		}
+	}
+
+	return (true);
+}
 
 int main(int ac, char **av)
 {
 	if (ac < 2)
 	{
 		std::cout << RED << "Usage: ./PmergeMe <list of numbers>" << RESET << std::endl;
+		return (1);
+	}
+
+	if (!isArgsValid(ac, av))
+	{
+		std::cout << RED << "Error: Invalid input. Please provide a list of positive integers." << RESET << std::endl;
 		return (1);
 	}
 
@@ -28,11 +55,11 @@ int main(int ac, char **av)
 		// double timeDeque;
 
 		start = clock();
-		std::string vectorResult = sorter.sortVector(ac, av);
+		std::string vectorResult = sorter.sortWithVector(ac, av);
 		timeVector = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
 
 		// start = clock();
-		// std::string dequeResult = sorter.sortDeque(ac, av);
+		// std::string dequeResult = sorter.sortWithDeque(ac, av);
 		// timeDeque = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
 
 		// if (vectorResult != dequeResult)
