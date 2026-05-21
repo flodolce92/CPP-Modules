@@ -6,16 +6,19 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:28:17 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/20 00:54:20 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 21:43:44 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PmergeMe.hpp>
 
-// Constructors and destructor
-PmergeMe::PmergeMe() : vectorComp(0), dequeComp(0) { DEBUG_LOG("PmergeMe default constructor", BLUE); }
+int PmergeMe::vectorComp = 0;
+int PmergeMe::dequeComp = 0;
 
-PmergeMe::PmergeMe(const PmergeMe &src) : vectorComp(src.vectorComp), dequeComp(src.dequeComp) { DEBUG_LOG("PmergeMe copy constructor", BLUE); }
+// Constructors and destructor
+PmergeMe::PmergeMe() { DEBUG_LOG("PmergeMe default constructor", BLUE); }
+
+PmergeMe::PmergeMe(const PmergeMe &src) : vector(src.vector), deque(src.deque) { DEBUG_LOG("PmergeMe copy constructor", BLUE); }
 
 PmergeMe::~PmergeMe() { DEBUG_LOG("PmergeMe destructor", BLUE); }
 
@@ -28,17 +31,16 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 	{
 		this->vector = src.vector;
 		this->deque = src.deque;
-		this->vectorComp = src.vectorComp;
-		this->dequeComp = src.dequeComp;
 	}
 
 	return (*this);
 }
 
 // Private methods
-bool PmergeMe::compare(int a, int b)
+bool PmergeMe::compare(std::vector<int>::iterator a, std::vector<int>::iterator b)
 {
-	return (a < b);
+	PmergeMe::vectorComp++;
+	return (*a < *b);
 }
 
 void PmergeMe::swapElements(std::vector<int>::iterator first, int elementSize)
@@ -51,14 +53,55 @@ void PmergeMe::swapElements(std::vector<int>::iterator first, int elementSize)
 	}
 }
 
+long PmergeMe::jacobsthalNumber(long n)
+{
+	return round((pow(2, n + 1) + pow(-1, n)) / 3);
+}
+
 void PmergeMe::loadVector(int ac, char **av)
 {
 	for (int i = 1; i < ac; i++)
 		this->vector.push_back(std::atoi(av[i]));
 }
 
+void PmergeMe::jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main, std::vector<std::vector<int>::iterator> &pend)
+{
+	int jPrev = 1;
+	int insertions = 0;
+	int jIndex = 2;
+	while (true)
+	{
+		int jCurr = jacobsthalNumber(jIndex);
+		int jDelta = jCurr - jPrev;
+		int offset = 0;
+
+		if (jDelta > static_cast<int>(pend.size()))
+			break;
+
+		int insertionsToDo = jDelta;
+		std::vector<std::vector<int>::iterator>::iterator pendToInsert = pend.begin() + jDelta - 1;
+		std::vector<std::vector<int>::iterator>::iterator bound = main.begin() + jCurr + insertions;
+		while (insertionsToDo)
+		{
+			std::vector<std::vector<int>::iterator>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compare);
+			std::vector<std::vector<int>::iterator>::iterator inserted = main.insert(idx, *pendToInsert);
+			insertionsToDo--;
+			pendToInsert = pend.erase(pendToInsert);
+			pendToInsert--;
+			if ((inserted - main.begin()) == jCurr + insertions)
+				offset++;
+			bound = main.begin() + jCurr + insertions - offset;
+		}
+		jPrev = jCurr;
+		insertions += jDelta;
+		offset = 0;
+		jIndex++;
+	}
+}
+
 void PmergeMe::mergeSortVector(std::vector<int> &vector, int elementSize)
 {
+	// Step 1: Compare and swap elements in pairs
 	int elementCount = vector.size() / elementSize;
 	if (elementCount <= 1)
 		return;
@@ -73,10 +116,34 @@ void PmergeMe::mergeSortVector(std::vector<int> &vector, int elementSize)
 	{
 		std::vector<int>::iterator left = it + elementSize - 1;
 		std::vector<int>::iterator right = left + elementSize;
-		if (compare(*right, *left))
+		if (compare(right, left))
 			swapElements(it, elementSize);
 	}
 	mergeSortVector(vector, elementSize * 2);
+
+	// Step 2: Merge sorted subarrays
+	std::vector<std::vector<int>::iterator> main;
+	std::vector<std::vector<int>::iterator> pend;
+
+	// Put b1 and a1 in main as b1 is always less than a1
+	// and the smaller element in vector
+	main.push_back(vector.begin() + elementSize - 1);
+	main.push_back(vector.begin() + elementSize * 2 - 1);
+
+	for (int i = 4; i <= elementCount; i += 2)
+	{
+		// For each element in element pair, put the winner in main and the loser in pend
+		// starting from the fourth element as the winner and the third element as loser
+		pend.push_back(vector.begin() + elementSize * (i - 1) - 1);
+		main.push_back(vector.begin() + elementSize * i - 1);
+	}
+
+	if (isOdd)
+	{
+		pend.push_back(end + elementSize - 1);
+	}
+
+	jacobsthalInsertion(main, pend);
 }
 
 // Public methods

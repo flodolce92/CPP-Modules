@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:21:22 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/19 23:46:12 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 19:28:13 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ int main(int ac, char **av)
 		double timeVector;
 		// double timeDeque;
 
+		PmergeMe::vectorComp = 0;
 		start = clock();
 		std::string vectorResult = sorter.sortWithVector(ac, av);
 		timeVector = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
 
+		// PmergeMe::dequeComp = 0;
 		// start = clock();
 		// std::string dequeResult = sorter.sortWithDeque(ac, av);
 		// timeDeque = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
