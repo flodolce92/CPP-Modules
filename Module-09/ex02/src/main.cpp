@@ -6,13 +6,13 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:21:22 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 22:36:29 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:19:06 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PmergeMe.hpp>
 
-bool isArgsValid(int ac, char **av)
+static bool isArgsValid(int ac, char **av)
 {
 	for (int i = 1; i < ac; i++)
 	{
