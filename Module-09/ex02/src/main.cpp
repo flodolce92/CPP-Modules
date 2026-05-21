@@ -6,11 +6,12 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:21:22 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 22:12:28 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:31:41 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PmergeMe.hpp>
+#include <iomanip>
 
 bool isArgsValid(int ac, char **av)
 {
@@ -57,12 +58,12 @@ int main(int ac, char **av)
 		PmergeMe::vectorComp = 0;
 		start = clock();
 		std::string vectorResult = sorter.sortWithVector(ac, av);
-		timeVector = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+		timeVector = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000;
 
 		// PmergeMe::dequeComp = 0;
 		// start = clock();
 		// std::string dequeResult = sorter.sortWithDeque(ac, av);
-		// timeDeque = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+		// timeDeque = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000;
 
 		// if (vectorResult != dequeResult)
 		// 	throw std::runtime_error("Sorting results do not match between vector and deque.");
@@ -71,9 +72,10 @@ int main(int ac, char **av)
 		for (int i = 1; i < ac; i++)
 			std::cout << av[i] << " ";
 		std::cout << RESET << std::endl;
+
 		std::cout << GREEN << "After sorting: " << vectorResult << RESET << std::endl;
-		std::cout << BLUE << "Time taken to sort with vector: " << timeVector << " seconds" << RESET << std::endl;
-		// std::cout << BLUE << "Time taken to sort with deque: " << timeDeque << " seconds" << RESET << std::endl;
+		std::cout << BLUE << "Time taken to sort " << ac - 1 << " elements with vector: " << timeVector << " microseconds" << RESET << std::endl;
+		// std::cout << BLUE << "Time taken to sort " << ac - 1 << " elements with deque: " << timeDeque << " microseconds" << RESET << std::endl;
 		std::cout << BLUE << "Number of comparisons with vector: " << PmergeMe::vectorComp << RESET << std::endl;
 		// std::cout << BLUE << "Number of comparisons with deque: " << PmergeMe::dequeComp << RESET << std::endl;
 	}

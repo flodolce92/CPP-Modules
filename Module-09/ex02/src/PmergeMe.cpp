@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:28:17 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 22:10:48 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:25:24 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &src)
 }
 
 // Private methods
+long PmergeMe::jacobsthalNumber(long n)
+{
+	return round((pow(2, n + 1) + pow(-1, n)) / 3);
+}
+
+/*----------------------------------------------------------------------------------*/
+/*                                VECTOR SORTING                                    */
+/*----------------------------------------------------------------------------------*/
+void PmergeMe::loadVector(int ac, char **av)
+{
+	for (int i = 1; i < ac; i++)
+		this->vector.push_back(std::atoi(av[i]));
+}
+
 bool PmergeMe::compare(std::vector<int>::iterator a, std::vector<int>::iterator b)
 {
 	PmergeMe::vectorComp++;
@@ -51,17 +65,6 @@ void PmergeMe::swapElements(std::vector<int>::iterator first, int elementSize)
 		std::iter_swap(first, first + elementSize);
 		++first;
 	}
-}
-
-long PmergeMe::jacobsthalNumber(long n)
-{
-	return round((pow(2, n + 1) + pow(-1, n)) / 3);
-}
-
-void PmergeMe::loadVector(int ac, char **av)
-{
-	for (int i = 1; i < ac; i++)
-		this->vector.push_back(std::atoi(av[i]));
 }
 
 void PmergeMe::jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main, std::vector<std::vector<int>::iterator> &pend)

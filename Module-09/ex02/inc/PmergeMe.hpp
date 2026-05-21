@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:23:04 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 22:02:22 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:24:40 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ class PmergeMe
 		// Private methods
 		template <typename T>
 		std::string containerToString(const T &container);
-		static bool compare(std::vector<int>::iterator a, std::vector<int>::iterator b);
-		void swapElements(std::vector<int>::iterator it, int elementSize);
 		long jacobsthalNumber(long n);
 
 		// Vector
 		void loadVector(int ac, char **av);
+		static bool compare(std::vector<int>::iterator a, std::vector<int>::iterator b);
+		void swapElements(std::vector<int>::iterator it, int elementSize);
 		void jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main, std::vector<std::vector<int>::iterator> &pend);
 		void copyMainToVector(std::vector<std::vector<int>::iterator> &main, std::vector<int> &vector, int elementSize);
 		void mergeSortVector(std::vector<int> &vector, int elementSize);
