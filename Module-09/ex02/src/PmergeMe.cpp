@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:28:17 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 22:45:32 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:28:17 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void PmergeMe::loadVector(int ac, char **av)
 		this->vector.push_back(std::atoi(av[i]));
 }
 
-bool PmergeMe::compareVec(std::vector<int>::iterator a, std::vector<int>::iterator b)
+bool PmergeMe::compareVec(vecIter a, vecIter b)
 {
 	PmergeMe::vectorComp++;
 	return (*a < *b);
 }
 
-void PmergeMe::swapElements(std::vector<int>::iterator first, int elementSize)
+void PmergeMe::swapElements(vecIter first, int elementSize)
 {
-	std::vector<int>::iterator last = first + elementSize;
+	vecIter last = first + elementSize;
 	while (first != last)
 	{
 		std::iter_swap(first, first + elementSize);
@@ -67,7 +67,7 @@ void PmergeMe::swapElements(std::vector<int>::iterator first, int elementSize)
 	}
 }
 
-void PmergeMe::jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main, std::vector<std::vector<int>::iterator> &pend)
+void PmergeMe::jacobsthalInsertion(std::vector<vecIter> &main, std::vector<vecIter> &pend)
 {
 	int jPrev = 1;
 	int insertions = 0;
@@ -82,12 +82,12 @@ void PmergeMe::jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main
 			break;
 
 		int insertionsToDo = jDelta;
-		std::vector<std::vector<int>::iterator>::iterator pendToInsert = pend.begin() + jDelta - 1;
-		std::vector<std::vector<int>::iterator>::iterator bound = main.begin() + jCurr + insertions;
+		std::vector<vecIter>::iterator pendToInsert = pend.begin() + jDelta - 1;
+		std::vector<vecIter>::iterator bound = main.begin() + jCurr + insertions;
 		while (insertionsToDo)
 		{
-			std::vector<std::vector<int>::iterator>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareVec);
-			std::vector<std::vector<int>::iterator>::iterator inserted = main.insert(idx, *pendToInsert);
+			std::vector<vecIter>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareVec);
+			std::vector<vecIter>::iterator inserted = main.insert(idx, *pendToInsert);
 			insertionsToDo--;
 			pendToInsert = pend.erase(pendToInsert);
 			pendToInsert--;
@@ -102,10 +102,10 @@ void PmergeMe::jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main
 	}
 }
 
-void PmergeMe::copyMainToVector(std::vector<std::vector<int>::iterator> &main, std::vector<int> &vector, int elementSize)
+void PmergeMe::copyMainToVector(std::vector<vecIter> &main, std::vector<int> &vector, int elementSize)
 {
 	std::vector<int> temp;
-	for (std::vector<std::vector<int>::iterator>::iterator it = main.begin(); it != main.end(); it++)
+	for (std::vector<vecIter>::iterator it = main.begin(); it != main.end(); it++)
 	{
 		// Copy the elements of the subarray to temp in main order
 		for (int i = 0; i < elementSize; i++)
@@ -125,23 +125,23 @@ void PmergeMe::mergeSortVector(std::vector<int> &vector, int elementSize)
 		return;
 
 	bool isOdd = (elementCount % 2 != 0);
-	std::vector<int>::iterator start = vector.begin();
-	std::vector<int>::iterator end = start + elementSize * elementCount;
+	vecIter start = vector.begin();
+	vecIter end = start + elementSize * elementCount;
 	if (isOdd)
 		end -= elementSize;
 
-	for (std::vector<int>::iterator it = start; it < end; it += elementSize * 2)
+	for (vecIter it = start; it < end; it += elementSize * 2)
 	{
-		std::vector<int>::iterator left = it + elementSize - 1;
-		std::vector<int>::iterator right = left + elementSize;
+		vecIter left = it + elementSize - 1;
+		vecIter right = left + elementSize;
 		if (compareVec(right, left))
 			swapElements(it, elementSize);
 	}
 	mergeSortVector(vector, elementSize * 2);
 
 	// Step 2: Merge sorted subarrays
-	std::vector<std::vector<int>::iterator> main;
-	std::vector<std::vector<int>::iterator> pend;
+	std::vector<vecIter> main;
+	std::vector<vecIter> pend;
 
 	// Put b1 and a1 in main as b1 is always less than a1
 	// and the smaller element in vector
@@ -166,9 +166,9 @@ void PmergeMe::mergeSortVector(std::vector<int> &vector, int elementSize)
 	// Insert remaining elements in pend into main in reverse order
 	for (ssize_t i = pend.size() - 1; i >= 0; i--)
 	{
-		std::vector<std::vector<int>::iterator>::iterator pendToInsert = pend.begin() + i;
-		std::vector<std::vector<int>::iterator>::iterator bound = main.begin() + main.size() - pend.size() + i + isOdd;
-		std::vector<std::vector<int>::iterator>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareVec);
+		std::vector<vecIter>::iterator pendToInsert = pend.begin() + i;
+		std::vector<vecIter>::iterator bound = main.begin() + main.size() - pend.size() + i + isOdd;
+		std::vector<vecIter>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareVec);
 		main.insert(idx, *pendToInsert);
 	}
 
@@ -184,15 +184,15 @@ void PmergeMe::loadDeque(int ac, char **av)
 		this->deque.push_back(std::atoi(av[i]));
 }
 
-bool PmergeMe::compareDeq(std::deque<int>::iterator a, std::deque<int>::iterator b)
+bool PmergeMe::compareDeq(deqIter a, deqIter b)
 {
 	PmergeMe::dequeComp++;
 	return (*a < *b);
 }
 
-void PmergeMe::swapElements(std::deque<int>::iterator first, int elementSize)
+void PmergeMe::swapElements(deqIter first, int elementSize)
 {
-	std::deque<int>::iterator last = first + elementSize;
+	deqIter last = first + elementSize;
 	while (first != last)
 	{
 		std::iter_swap(first, first + elementSize);
@@ -200,7 +200,7 @@ void PmergeMe::swapElements(std::deque<int>::iterator first, int elementSize)
 	}
 }
 
-void PmergeMe::jacobsthalInsertion(std::deque<std::deque<int>::iterator> &main, std::deque<std::deque<int>::iterator> &pend)
+void PmergeMe::jacobsthalInsertion(std::deque<deqIter> &main, std::deque<deqIter> &pend)
 {
 	int jPrev = 1;
 	int insertions = 0;
@@ -215,12 +215,12 @@ void PmergeMe::jacobsthalInsertion(std::deque<std::deque<int>::iterator> &main, 
 			break;
 
 		int insertionsToDo = jDelta;
-		std::deque<std::deque<int>::iterator>::iterator pendToInsert = pend.begin() + jDelta - 1;
-		std::deque<std::deque<int>::iterator>::iterator bound = main.begin() + jCurr + insertions;
+		std::deque<deqIter>::iterator pendToInsert = pend.begin() + jDelta - 1;
+		std::deque<deqIter>::iterator bound = main.begin() + jCurr + insertions;
 		while (insertionsToDo)
 		{
-			std::deque<std::deque<int>::iterator>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareDeq);
-			std::deque<std::deque<int>::iterator>::iterator inserted = main.insert(idx, *pendToInsert);
+			std::deque<deqIter>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareDeq);
+			std::deque<deqIter>::iterator inserted = main.insert(idx, *pendToInsert);
 			insertionsToDo--;
 			pendToInsert = pend.erase(pendToInsert);
 			pendToInsert--;
@@ -235,10 +235,10 @@ void PmergeMe::jacobsthalInsertion(std::deque<std::deque<int>::iterator> &main, 
 	}
 }
 
-void PmergeMe::copyMainToDeque(std::deque<std::deque<int>::iterator> &main, std::deque<int> &deque, int elementSize)
+void PmergeMe::copyMainToDeque(std::deque<deqIter> &main, std::deque<int> &deque, int elementSize)
 {
 	std::deque<int> temp;
-	for (std::deque<std::deque<int>::iterator>::iterator it = main.begin(); it != main.end(); it++)
+	for (std::deque<deqIter>::iterator it = main.begin(); it != main.end(); it++)
 	{
 		// Copy the elements of the subarray to temp in main order
 		for (int i = 0; i < elementSize; i++)
@@ -258,23 +258,23 @@ void PmergeMe::mergeSortDeque(std::deque<int> &deque, int elementSize)
 		return;
 
 	bool isOdd = (elementCount % 2 != 0);
-	std::deque<int>::iterator start = deque.begin();
-	std::deque<int>::iterator end = start + elementSize * elementCount;
+	deqIter start = deque.begin();
+	deqIter end = start + elementSize * elementCount;
 	if (isOdd)
 		end -= elementSize;
 
-	for (std::deque<int>::iterator it = start; it < end; it += elementSize * 2)
+	for (deqIter it = start; it < end; it += elementSize * 2)
 	{
-		std::deque<int>::iterator left = it + elementSize - 1;
-		std::deque<int>::iterator right = left + elementSize;
+		deqIter left = it + elementSize - 1;
+		deqIter right = left + elementSize;
 		if (compareDeq(right, left))
 			swapElements(it, elementSize);
 	}
 	mergeSortDeque(deque, elementSize * 2);
 
 	// Step 2: Merge sorted subarrays
-	std::deque<std::deque<int>::iterator> main;
-	std::deque<std::deque<int>::iterator> pend;
+	std::deque<deqIter> main;
+	std::deque<deqIter> pend;
 
 	// Put b1 and a1 in main as b1 is always less than a1
 	// and the smaller element in vector
@@ -299,9 +299,9 @@ void PmergeMe::mergeSortDeque(std::deque<int> &deque, int elementSize)
 	// Insert remaining elements in pend into main in reverse order
 	for (ssize_t i = pend.size() - 1; i >= 0; i--)
 	{
-		std::deque<std::deque<int>::iterator>::iterator pendToInsert = pend.begin() + i;
-		std::deque<std::deque<int>::iterator>::iterator bound = main.begin() + main.size() - pend.size() + i + isOdd;
-		std::deque<std::deque<int>::iterator>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareDeq);
+		std::deque<deqIter>::iterator pendToInsert = pend.begin() + i;
+		std::deque<deqIter>::iterator bound = main.begin() + main.size() - pend.size() + i + isOdd;
+		std::deque<deqIter>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compareDeq);
 		main.insert(idx, *pendToInsert);
 	}
 

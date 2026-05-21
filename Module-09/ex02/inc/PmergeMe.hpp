@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:23:04 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 22:58:22 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 23:29:09 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 
 class PmergeMe
 {
+	// Type definitions for iterators
+	typedef std::vector<int>::iterator vecIter;
+	typedef std::deque<int>::iterator deqIter;
+
 	private:
 		std::vector<int> vector;
 		std::deque<int> deque;
@@ -35,18 +39,18 @@ class PmergeMe
 
 		// Vector
 		void loadVector(int ac, char **av);
-		static bool compareVec(std::vector<int>::iterator a, std::vector<int>::iterator b);
-		void swapElements(std::vector<int>::iterator it, int elementSize);
-		void jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main, std::vector<std::vector<int>::iterator> &pend);
-		void copyMainToVector(std::vector<std::vector<int>::iterator> &main, std::vector<int> &vector, int elementSize);
+		static bool compareVec(vecIter a, vecIter b);
+		void swapElements(vecIter it, int elementSize);
+		void jacobsthalInsertion(std::vector<vecIter> &main, std::vector<vecIter> &pend);
+		void copyMainToVector(std::vector<vecIter> &main, std::vector<int> &vector, int elementSize);
 		void mergeSortVector(std::vector<int> &vector, int elementSize);
 
 		// Deque
 		void loadDeque(int ac, char **av);
-		static bool compareDeq(std::deque<int>::iterator a, std::deque<int>::iterator b);
-		void swapElements(std::deque<int>::iterator it, int elementSize);
-		void jacobsthalInsertion(std::deque<std::deque<int>::iterator> &main, std::deque<std::deque<int>::iterator> &pend);
-		void copyMainToDeque(std::deque<std::deque<int>::iterator> &main, std::deque<int> &deque, int elementSize);
+		static bool compareDeq(deqIter a, deqIter b);
+		void swapElements(deqIter it, int elementSize);
+		void jacobsthalInsertion(std::deque<deqIter> &main, std::deque<deqIter> &pend);
+		void copyMainToDeque(std::deque<deqIter> &main, std::deque<int> &deque, int elementSize);
 		void mergeSortDeque(std::deque<int> &deque, int elementSize);
 
 	public:
