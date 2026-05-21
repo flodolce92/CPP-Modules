@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:21:22 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 19:28:13 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:12:28 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int main(int ac, char **av)
 		std::cout << GREEN << "After sorting: " << vectorResult << RESET << std::endl;
 		std::cout << BLUE << "Time taken to sort with vector: " << timeVector << " seconds" << RESET << std::endl;
 		// std::cout << BLUE << "Time taken to sort with deque: " << timeDeque << " seconds" << RESET << std::endl;
+		std::cout << BLUE << "Number of comparisons with vector: " << PmergeMe::vectorComp << RESET << std::endl;
+		// std::cout << BLUE << "Number of comparisons with deque: " << PmergeMe::dequeComp << RESET << std::endl;
 	}
 	catch (const std::exception &e)
 	{

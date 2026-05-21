@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:28:17 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 21:43:44 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:10:48 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,21 @@ void PmergeMe::jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main
 	}
 }
 
+void PmergeMe::copyMainToVector(std::vector<std::vector<int>::iterator> &main, std::vector<int> &vector, int elementSize)
+{
+	std::vector<int> temp;
+	for (std::vector<std::vector<int>::iterator>::iterator it = main.begin(); it != main.end(); it++)
+	{
+		// Copy the elements of the subarray to temp in main order
+		for (int i = 0; i < elementSize; i++)
+			temp.push_back(*(*it - elementSize + i + 1));
+	}
+
+	// Copy the sorted elements from temp back to vector
+	for (size_t i = 0; i < temp.size(); i++)
+		vector[i] = temp[i];
+}
+
 void PmergeMe::mergeSortVector(std::vector<int> &vector, int elementSize)
 {
 	// Step 1: Compare and swap elements in pairs
@@ -144,6 +159,17 @@ void PmergeMe::mergeSortVector(std::vector<int> &vector, int elementSize)
 	}
 
 	jacobsthalInsertion(main, pend);
+
+	// Insert remaining elements in pend into main in reverse order
+	for (ssize_t i = pend.size() - 1; i >= 0; i--)
+	{
+		std::vector<std::vector<int>::iterator>::iterator pendToInsert = pend.begin() + i;
+		std::vector<std::vector<int>::iterator>::iterator bound = main.begin() + main.size() - pend.size() + i + isOdd;
+		std::vector<std::vector<int>::iterator>::iterator idx = std::upper_bound(main.begin(), bound, *pendToInsert, compare);
+		main.insert(idx, *pendToInsert);
+	}
+
+	copyMainToVector(main, vector, elementSize);
 }
 
 // Public methods

@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 20:23:04 by flo-dolc          #+#    #+#             */
-/*   Updated: 2026/05/21 19:40:33 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2026/05/21 22:02:22 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class PmergeMe
 		// Vector
 		void loadVector(int ac, char **av);
 		void jacobsthalInsertion(std::vector<std::vector<int>::iterator> &main, std::vector<std::vector<int>::iterator> &pend);
+		void copyMainToVector(std::vector<std::vector<int>::iterator> &main, std::vector<int> &vector, int elementSize);
 		void mergeSortVector(std::vector<int> &vector, int elementSize);
 
 	public:
